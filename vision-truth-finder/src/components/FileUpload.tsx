@@ -32,10 +32,10 @@ export const FileUpload = ({ onFileUpload }: FileUploadProps) => {
   };
 
   const handleFileSelection = (file: File) => {
-    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'video/mp4'];
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
     
     if (!validTypes.includes(file.type)) {
-      alert('Please upload a valid image (JPEG, PNG) or video (MP4) file.');
+      alert('Please upload a valid image (JPEG, PNG) file.');
       return;
     }
 
@@ -64,7 +64,7 @@ export const FileUpload = ({ onFileUpload }: FileUploadProps) => {
       <div className="text-center mb-6">
         <h2 className="text-2xl font-semibold mb-2">Upload Media File</h2>
         <p className="text-muted-foreground">
-          Supported formats: JPEG, PNG images and MP4 videos (max 10MB)
+          Supported formats: JPEG, PNG images (max 10MB)
         </p>
       </div>
 

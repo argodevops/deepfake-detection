@@ -1,14 +1,22 @@
+# --- API / Web ---
 fastapi
 uvicorn
 python-multipart
-pillow
-numpy
 pydantic
-aiohttp  
-tensorflow   
+aiohttp
+slowapi
+
+# --- ML / Image Processing ---
+tensorflow-cpu
+numpy
+pillow
 opencv-python
 mtcnn
+
+# --- Observability ---
 prometheus-fastapi-instrumentator
-slowapi
-supabase
+prometheus-client
+
+# --- Utilities / Infra ---
 python-dotenv
+supabase

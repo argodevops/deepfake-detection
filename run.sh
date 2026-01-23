@@ -22,7 +22,7 @@ start_app() {
 
   echo -e "${YELLOW}🔧 Starting Docker containers...${RESET}"
   cd "$BACKEND_DIR"
-  docker-compose up --detach
+  docker compose up --detach --build
   cd ..
 
   echo -e "${YELLOW}🌐 Serving frontend on http://localhost:${PORT}...${RESET}"
@@ -38,7 +38,7 @@ start_app() {
 stop_app() {
   echo -e "${YELLOW}🛑 Stopping Docker containers...${RESET}"
   cd "$BACKEND_DIR"
-  docker-compose down
+  docker compose down
   cd ..
 
   # Stop frontend with improved process handling
@@ -97,7 +97,7 @@ status_app() {
   # Check Docker containers
   echo -e "${YELLOW}Docker containers:${RESET}"
   cd "$BACKEND_DIR"
-  if docker-compose ps | grep -q "Up"; then
+  if docker compose ps | grep -q "Up"; then
     echo -e "${GREEN}✅ Backend containers running${RESET}"
   else
     echo -e "${RED}❌ Backend containers not running${RESET}"

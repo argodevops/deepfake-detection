@@ -1,0 +1,16 @@
+# Don't send monitoring/data directories to build context
+grafana/
+prometheus/
+**/csv
+**/*.db
+**/*.sqlite
+**/*.log
+
+# VCS / node / python junk
+.git
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+dist/
+

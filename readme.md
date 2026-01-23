@@ -1,9 +1,3 @@
-![Tech](https://img.shields.io/badge/ML-TensorFlow-blue)
-![Stack](https://img.shields.io/badge/Backend-FastAPI-green)
-![Frontend](https://img.shields.io/badge/Frontend-React%2FVite-yellow)
-![Deployment](https://img.shields.io/badge/Deployment-Docker%20%7C%20Prometheus%20%7C%20Grafana-purple)
-
-
 # 🧠 Deepfake Detection on Face-Swap Based Videos
 
 A complete end-to-end AI/ML project to detect face-swapped deepfake videos using XceptionNet. Built with a scalable and production-ready architecture including a modern frontend, robust backend, containerized deployment, and observability stack.
@@ -78,12 +72,6 @@ Deepfakes pose a significant threat to digital authenticity. This project tackle
 * Handles CORS, header injection, and internal routing
 * Access controlled to internal Docker network
 
-### 📊 Monitoring with Prometheus + Grafana
-
-* Custom FastAPI metrics exposed for Prometheus
-* Prometheus scrapes metrics and feeds into Grafana
-* Prebuilt dashboards for latency, throughput, resource usage, and errors
-
 ---
 
 ## 🚀 Getting Started
@@ -91,7 +79,7 @@ Deepfakes pose a significant threat to digital authenticity. This project tackle
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Arman17625/deepfake-detection
+git clone https://github.com/argodevops/deepfake-detection
 ```
 
 ### 2. Build and Run All Services
@@ -104,7 +92,6 @@ git clone https://github.com/Arman17625/deepfake-detection
 
 * Frontend: [http://localhost:8080](http://localhost:3000)
 * Backend: [http://localhost:8000/docs](http://localhost:8000/docs)
-* Grafana: [http://localhost:3000](http://localhost:3000) (default login: `admin/admin`)
 
 ### 4. Stop all Services
 
@@ -132,24 +119,9 @@ git clone https://github.com/Arman17625/deepfake-detection
 
 The model can be downloaded from [Kaggle](https://www.kaggle.com/models/armanchaudhary/xception5o) 
 
-Upvote the model ⭐
-
-
 ---
 
 
 ## 📝 License
 
 This project is for educational and research purposes only.
-
----
-
-## 🙌 Acknowledgements
-
-* FaceForensics++ Dataset
-* XceptionNet architecture
-* FastAPI, Vite, Prometheus, Grafana community
-
----
-
-> If you like this project, feel free to ⭐ the repo and share your feedback!

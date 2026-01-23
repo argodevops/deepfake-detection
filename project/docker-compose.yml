@@ -1,33 +1,36 @@
-version: '3'
+version: "3.9"
 
 services:
   model_api:
-    image: arman17625/project-model_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: project-model_api:local
+    container_name: model_api
     ports:
       - "8000:8000"
-    depends_on:
-      - prometheus
     networks:
       - internal
     environment:
-      - SUPABASE_URL=${SUPABASE_URL}
-      - SUPABASE_KEY=${SUPABASE_KEY}
-
-  prometheus:
-    image: prom/prometheus
-    ports:
-      - "9090:9090"
+      MODELS_DIR: /models
+      MODELS_CONFIG_PATH: /models/models.json
+      REAL_THRESHOLD: "0.5"
+      LOG_DIR: /app/logs
+      DATA_DIR: /app/data
     volumes:
-      - ./prometheus:/etc/prometheus
-    command:
-      - "--config.file=/etc/prometheus/prometheus.yml"
-
-  grafana:
-    image: grafana/grafana
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./grafana:/var/lib/grafana
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./models:/models:ro
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health').read(); print('ok')"
+      interval: 10s
+      timeout: 3s
+      retries: 10
 
   nginx:
     image: nginx:latest
@@ -36,10 +39,12 @@ services:
       - "80:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../vision-truth-finder/dist:/usr/share/nginx/html:ro
     depends_on:
       - model_api
     networks:
       - internal
+    restart: unless-stopped
 
 networks:
   internal:

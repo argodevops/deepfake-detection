@@ -1,0 +1,36 @@
+{
+  "models": [
+    {
+      "name": "Xception Deepfakes_detection_model",
+      "file": "Deepfakes_detection_model.keras",
+      "description": "General-purpose detector for common deepfake artefacts across multiple manipulation techniques.",
+      "domain": "manipulation",
+      "output": "prob_real",
+      "threshold": 0.5
+    },
+    {
+      "name": "Xception FaceSwap_detection_model",
+      "file": "FaceSwap_detection_model.keras",
+      "description": "Detects face replacement techniques (FaceSwap-style manipulations).",
+      "domain": "manipulation",
+      "output": "prob_real",
+      "threshold": 0.5
+    },
+    {
+      "name": "Xception FaceShifter_detection_model",
+      "file": "FaceShifter_detection_model.keras",
+      "description": "Focused on identity transfer and high-quality synthesis artefacts (FaceShifter-style).",
+      "domain": "manipulation",
+      "output": "prob_real",
+      "threshold": 0.5
+    },
+    {
+      "name": "Xception Face2Face_detection_model",
+      "file": "Face2Face_detection_model.keras",
+      "description": "Detects facial reenactment (Face2Face-style expression/pose transfer).",
+      "domain": "reenactment",
+      "output": "prob_real",
+      "threshold": 0.5
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+2026-01-03 15:35:14,982 INFO deepfake-api-xception - Loading Xception ensemble models from: /models
+2026-01-03 15:35:14,982 INFO deepfake-api-xception - Loading model 'Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-03 15:35:16,123 INFO deepfake-api-xception - Loading model 'FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-03 15:35:16,882 INFO deepfake-api-xception - Loading model 'FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-03 15:35:17,668 INFO deepfake-api-xception - Loading model 'Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-03 15:35:18,490 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-03 15:47:09,251 INFO deepfake-api-xception - Loading Xception ensemble models from: /models
+2026-01-03 15:47:09,251 INFO deepfake-api-xception - Loading model 'Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-03 15:47:10,565 INFO deepfake-api-xception - Loading model 'FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-03 15:47:11,402 INFO deepfake-api-xception - Loading model 'FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-03 15:47:12,219 INFO deepfake-api-xception - Loading model 'Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-03 15:47:13,032 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-03 16:04:55,450 INFO deepfake-api-xception - Loading Xception ensemble models from: /models
+2026-01-03 16:04:55,451 INFO deepfake-api-xception - Loading model 'Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-03 16:04:56,681 INFO deepfake-api-xception - Loading model 'FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-03 16:04:57,542 INFO deepfake-api-xception - Loading model 'FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-03 16:04:58,382 INFO deepfake-api-xception - Loading model 'Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-03 16:04:59,203 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-03 19:48:17,973 INFO deepfake-api-xception - Loading Xception ensemble models from: /models
+2026-01-03 19:48:17,974 INFO deepfake-api-xception - Loading model 'Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-03 19:48:19,155 INFO deepfake-api-xception - Loading model 'FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-03 19:48:19,984 INFO deepfake-api-xception - Loading model 'FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-03 19:48:20,830 INFO deepfake-api-xception - Loading model 'Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-03 19:48:21,690 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-03 19:50:09,017 INFO deepfake-api-xception - Loading Xception ensemble models from: /models
+2026-01-03 19:50:09,018 INFO deepfake-api-xception - Loading model 'Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-03 19:50:10,434 INFO deepfake-api-xception - Loading model 'FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-03 19:50:11,509 INFO deepfake-api-xception - Loading model 'FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-03 19:50:12,279 INFO deepfake-api-xception - Loading model 'Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-03 19:50:13,034 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-04 15:06:06,132 INFO deepfake-api-xception - Loading model specs from: /app/models.json
+2026-01-04 15:06:06,133 ERROR deepfake-api-xception - Failed to load models: models.json not found at /app/models.json
+2026-01-04 15:16:24,450 INFO deepfake-api-xception - Loading model specs from: /app/models.json
+2026-01-04 15:16:24,450 ERROR deepfake-api-xception - Failed to load models: models.json not found at /app/models.json
+2026-01-04 15:19:53,180 INFO deepfake-api-xception - Loading model specs from: /app/models.json
+2026-01-04 15:19:53,181 ERROR deepfake-api-xception - Failed to load models: models.json not found at /app/models.json
+2026-01-04 15:21:14,369 INFO deepfake-api-xception - Loading model specs from: models.json
+2026-01-04 15:21:14,369 ERROR deepfake-api-xception - Failed to load models: models.json not found at models.json
+2026-01-04 15:22:07,400 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-04 15:22:07,402 INFO deepfake-api-xception - Loading model 'Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-04 15:22:08,532 INFO deepfake-api-xception - Loading model 'FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-04 15:22:09,437 INFO deepfake-api-xception - Loading model 'FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-04 15:22:10,322 INFO deepfake-api-xception - Loading model 'Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-04 15:22:11,158 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-04 15:36:14,636 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-04 15:36:14,636 INFO deepfake-api-xception - Loading model 'Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-04 15:36:15,738 INFO deepfake-api-xception - Loading model 'FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-04 15:36:16,647 INFO deepfake-api-xception - Loading model 'FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-04 15:36:17,454 INFO deepfake-api-xception - Loading model 'Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-04 15:36:18,244 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-04 15:59:33,904 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-04 15:59:33,905 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-04 15:59:35,020 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-04 15:59:35,905 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-04 15:59:36,733 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-04 15:59:37,544 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-04 15:59:57,751 ERROR deepfake-api-xception - Unhandled error in /predict: 'overall_fake_score'
+Traceback (most recent call last):
+  File "/app/main-xception.py", line 523, in predict
+    score = float(verdict["overall_fake_score"])
+                  ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'overall_fake_score'
+
+2026-01-04 16:07:58,703 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-04 16:07:58,704 ERROR deepfake-api-xception - Failed to load models: models.json models[0] missing/invalid 'threshold'
+2026-01-04 16:23:21,293 ERROR deepfake-api-xception - Failed to load models: name 'load_models_from_config' is not defined
+2026-01-04 16:28:26,538 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-04 16:28:26,541 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-04 16:28:27,664 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-04 16:28:28,594 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-04 16:28:29,480 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-04 16:28:30,337 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-05 14:57:58,269 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-05 14:57:58,270 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-05 14:57:59,472 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-05 14:58:00,332 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-05 14:58:01,165 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-05 14:58:02,015 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-05 14:58:26,223 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-05 14:58:26,224 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-05 14:58:27,289 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-05 14:58:28,138 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-05 14:58:28,951 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-05 14:58:29,690 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-06 09:10:01,420 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-06 09:10:01,421 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-06 09:10:02,674 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-06 09:10:03,721 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-06 09:10:04,568 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-06 09:10:05,459 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-15 18:26:55,105 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-15 18:26:55,106 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-15 18:26:56,408 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-15 18:26:57,347 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-15 18:26:58,214 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-15 18:26:59,052 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-20 08:20:26,831 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-20 08:20:26,833 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-20 08:20:28,444 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-20 08:20:29,627 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-20 08:20:30,752 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-20 08:20:31,979 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-22 18:50:22,956 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-22 18:50:22,958 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-22 18:50:24,185 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-22 18:50:25,054 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-22 18:50:25,887 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-22 18:50:26,702 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-23 07:35:07,796 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-23 07:35:07,798 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-23 07:35:08,905 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-23 07:35:09,677 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-23 07:35:10,454 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-23 07:35:11,232 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-23 18:52:00,707 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-23 18:52:00,708 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-23 18:52:01,908 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-23 18:52:02,732 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-23 18:52:03,592 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-23 18:52:04,505 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-23 19:04:23,565 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-23 19:04:23,566 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-23 19:04:24,726 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-23 19:04:25,675 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-23 19:04:26,556 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-23 19:04:27,398 INFO deepfake-api-xception - Loaded 4 models.
+2026-01-23 19:05:58,986 INFO deepfake-api-xception - Loading model specs from: /models/models.json
+2026-01-23 19:05:58,987 INFO deepfake-api-xception - Loading model 'Xception Deepfakes_detection_model' from 'Deepfakes_detection_model.keras'
+2026-01-23 19:06:00,166 INFO deepfake-api-xception - Loading model 'Xception FaceSwap_detection_model' from 'FaceSwap_detection_model.keras'
+2026-01-23 19:06:01,121 INFO deepfake-api-xception - Loading model 'Xception FaceShifter_detection_model' from 'FaceShifter_detection_model.keras'
+2026-01-23 19:06:01,993 INFO deepfake-api-xception - Loading model 'Xception Face2Face_detection_model' from 'Face2Face_detection_model.keras'
+2026-01-23 19:06:02,924 INFO deepfake-api-xception - Loaded 4 models.
