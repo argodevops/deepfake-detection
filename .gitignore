@@ -1,2 +1,4 @@
 .serve_pid
 frontend.log
+.env
+*.env
