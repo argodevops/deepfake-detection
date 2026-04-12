@@ -1,17 +1,20 @@
 import base64
 import datetime
 import io
+import ipaddress
 import json
 import logging
 import os
 import shutil
+import socket
+import tempfile
 import time
 import traceback
+import urllib.parse
 import uuid
 from pathlib import Path
-from typing import Optional
+from typing import Any, List, Literal, Optional
 from dataclasses import dataclass
-from typing import Any, List, Optional
 import aiohttp
 
 import numpy as np
@@ -43,6 +46,29 @@ logging.basicConfig(
     ],
 )
 logger = logging.getLogger("deepfake-api-xception")
+
+
+# ----------------------------
+# Upload / download limits
+# ----------------------------
+ALLOWED_UPLOAD_EXTENSIONS = {"jpg", "jpeg", "png", "webp"}
+MAX_DOWNLOAD_BYTES = 10 * 1024 * 1024  # 10 MB cap on URL-fetched images
+
+
+def _check_ssrf(url: str) -> None:
+    """Raise HTTPException if the URL resolves to a private/internal address."""
+    parsed = urllib.parse.urlparse(url)
+    hostname = parsed.hostname
+    if not hostname:
+        raise HTTPException(status_code=400, detail="Invalid image URL")
+    try:
+        results = socket.getaddrinfo(hostname, None)
+    except socket.gaierror:
+        raise HTTPException(status_code=400, detail="Could not resolve image URL host")
+    for _, _, _, _, sockaddr in results:
+        ip = ipaddress.ip_address(sockaddr[0])
+        if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_multicast or ip.is_reserved:
+            raise HTTPException(status_code=400, detail="Image URL resolves to a disallowed address")
 
 
 # ----------------------------
@@ -96,51 +122,6 @@ class ModelSpec:
     domain: str
     output: str
     threshold: float
-
-
-def _load_models_config(path: str) -> list[ModelSpec]:
-    """
-    Read models.json and return a list of ModelSpec.
-    Raises on invalid JSON or missing required fields.
-    """
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"models.json not found at {path}")
-
-    with open(path, "r", encoding="utf-8") as f:
-        data: dict[str, Any] = json.load(f)
-
-    raw_models = data.get("models")
-    if not isinstance(raw_models, list) or not raw_models:
-        raise ValueError("models.json must contain a non-empty 'models' array")
-
-    specs: list[ModelSpec] = []
-    for i, m in enumerate(raw_models):
-        if not isinstance(m, dict):
-            raise ValueError(f"models.json models[{i}] must be an object")
-
-        for key in ("name", "file", "description", "domain", "output", "threshold"):
-            if key not in m or not isinstance(m[key], str) or not m[key].strip():
-                raise ValueError(f"models.json models[{i}] missing/invalid '{key}'")
-
-        output = m["output"].strip()
-        if output not in ("prob_real", "prob_fake"):
-            raise ValueError(f"models.json models[{i}] invalid output '{output}' (must be prob_real or prob_fake)")
-
-        threshold = m["threshold"]
-        if not isinstance(threshold, (int, float)) or not (0.0 <= float(threshold) <= 1.0):
-            raise ValueError(f"models.json models[{i}] invalid threshold '{threshold}' (must be number in [0,1])")
-
-        specs.append(
-            ModelSpec(
-                name=m["name"].strip(),
-                file=m["file"].strip(),
-                description=m["description"].strip(),
-                domain=m["domain"].strip(),
-                output=output,
-                threshold=float(threshold),
-            )
-        )
-    return specs
 
 
 def _load_models_config(path: str) -> list[ModelSpec]:
@@ -481,9 +462,9 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_credentials=False,
+    allow_methods=["POST", "GET"],
+    allow_headers=["Content-Type"],
 )
 
 # Limit request body to 10MB
@@ -523,7 +504,7 @@ async def limit_request_size(request: Request, call_next):
 # ----------------------------
 class FeedbackRequest(BaseModel):
     prediction_id: str
-    user_actual_result: str  # "REAL" or "FAKE"
+    user_actual_result: Literal["REAL", "FAKE"]
     feedback_text: Optional[str] = None
     score: Optional[int] = None  # 1–5
 
@@ -599,26 +580,37 @@ async def predict(
         # Build temp input file
         # ----------------------------
         if file:
-            ext = (file.filename or "").split(".")[-1].lower() or "bin"
-            temp_path = f"temp_{uuid.uuid4()}.{ext}"
-            with open(temp_path, "wb") as buffer:
+            raw_ext = (file.filename or "").rsplit(".", 1)[-1].lower()
+            if raw_ext not in ALLOWED_UPLOAD_EXTENSIONS:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Unsupported file type '.{raw_ext}'. Allowed: {', '.join(sorted(ALLOWED_UPLOAD_EXTENSIONS))}",
+                )
+            fd, temp_path = tempfile.mkstemp(suffix=f".{raw_ext}")
+            with os.fdopen(fd, "wb") as buffer:
                 shutil.copyfileobj(file.file, buffer)
 
         elif req:
             if req.image_url:
+                url_str = str(req.image_url)
+                _check_ssrf(url_str)
                 async with aiohttp.ClientSession() as session:
-                    async with session.get(str(req.image_url)) as resp:
+                    async with session.get(url_str, allow_redirects=False) as resp:
                         if resp.status != 200:
                             raise HTTPException(status_code=400, detail="Failed to fetch image URL")
-                        img_bytes = await resp.read()
-                        temp_path = f"temp_{uuid.uuid4()}.jpg"
-                        with open(temp_path, "wb") as f:
+                        img_bytes = await resp.content.read(MAX_DOWNLOAD_BYTES + 1)
+                        if len(img_bytes) > MAX_DOWNLOAD_BYTES:
+                            raise HTTPException(status_code=400, detail="Remote image exceeds 10 MB size limit")
+                        fd, temp_path = tempfile.mkstemp(suffix=".jpg")
+                        with os.fdopen(fd, "wb") as f:
                             f.write(img_bytes)
 
             elif req.base64_image:
+                if len(req.base64_image) > (MAX_DOWNLOAD_BYTES * 4 // 3) + 64:
+                    raise HTTPException(status_code=400, detail="base64_image exceeds size limit")
                 img_bytes = base64.b64decode(req.base64_image)
-                temp_path = f"temp_{uuid.uuid4()}.jpg"
-                with open(temp_path, "wb") as f:
+                fd, temp_path = tempfile.mkstemp(suffix=".jpg")
+                with os.fdopen(fd, "wb") as f:
                     f.write(img_bytes)
 
             elif req.video_url:
@@ -669,7 +661,7 @@ async def predict(
         raise
     except Exception as e:
         logger.error("Unhandled error in /predict: %s\n%s", e, traceback.format_exc())
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail="Internal server error")
     finally:
         if temp_path and os.path.exists(temp_path):
             try:
@@ -719,7 +711,7 @@ async def submit_feedback(feedback: FeedbackRequest):
         raise
     except Exception as e:
         logger.error("Unhandled error in /feedback: %s\n%s", e, traceback.format_exc())
-        raise HTTPException(status_code=500, detail=f"Failed to submit feedback: {str(e)}")
+        raise HTTPException(status_code=500, detail="Internal server error")
 
 
 if __name__ == "__main__":
